@@ -1,0 +1,43 @@
+<template>
+    <lightning-card variant="Narrow" title="Submit For Approval" icon-name="standard:approval">
+    </lightning-card>
+    <div class="slds-grid slds-wrap slds-gutters slds-box">
+        <!--Search Approver Section Begins-->
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1">
+            <c-lookup place-holder="Search Approver" search-fields={searchFields} object-api-name="User" limit="20"
+                selected-record-ids={selectedRecordIds} onsearch={handleApproverSearch}></c-lookup>
+        </div>
+        <!--Search Approver Section Ends-->
+        <!--Section for showing approver comments Approver Begins-->
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-m-top_medium slds-align_absolute-center">
+            <lightning-textarea class="approverComment slds-size_1-of-1 slds-medium-size_1-of-1" name="comments"
+                label="Comments" required="true"></lightning-textarea>
+        </div>
+        <!--Section for showing approver comments Approver Ends-->
+        <!--Section for checking if all Approvers approval are required-->
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-m-top_medium slds-align_absolute-center">
+            <lightning-input type="checkbox" label="Require All Approvals?" class = "approverCheck"
+                field-level-help="If checked, will require all users approval.">
+            </lightning-input>
+        </div>
+        <!--Section for checking if all Approvers approval are required-->
+    </div>
+    <div class="slds-grid slds-wrap slds-gutters">
+        <!--Section for showing list of Approver Begins-->
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-m-top_medium slds-align_absolute-center">
+            <lightning-datatable key-field="id" data={data} class="selectedApprovers" columns={columns}
+                onrowaction={handleRowAction}>
+            </lightning-datatable>
+        </div>
+        <!--Section for showing list of Approver Ends-->
+
+        <!--Submit Button Section Begins-->
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-m-top_medium slds-align_absolute-center">
+            <lightning-button variant="brand" label="Submit" onclick={handleSubmit} class="slds-m-left_x-small">
+            </lightning-button>
+        </div>
+        <!--Submit Button Section Ends-->
+    </div>
+</template>
+</template>
+</template>

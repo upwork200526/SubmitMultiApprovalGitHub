@@ -1,0 +1,4 @@
+<aura:component implements="force:hasRecordId,force:lightningQuickActionWithoutHeader" 
+access="global" >  
+   <c:submitForApproval onclose="{!c.closeQA}" recordId="{!v.recordId}"/>  
+ </aura:component>
