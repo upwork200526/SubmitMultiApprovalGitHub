@@ -1,0 +1,31 @@
+<!--Generic Lookup Component to fetch records of any object-->
+<template>
+    <!--Search Field Starts-->
+    <lightning-input type="search" placeholder={placeHolder} onchange={searchRecords} value={searchText}>
+    </lightning-input>
+    <!--Search Field Ends-->
+    <!--Show Search List if user has typed something-->
+    <div class="slds-box" if:true={showSearchList}>
+        <ul class="slds-has-dividers_top-space searchBar">
+            <!--Display No Records Found if no matching records are present-->
+            <template if:false={recordFound}>
+                <li class="slds-item">
+                    <a onclick={closeSearchList}>
+                        <lightning-icon icon-name="utility:close" size="x-small"></lightning-icon> Close
+                    </a>
+                </li>
+                <li class="slds-item">No Records Found!!</li>
+            </template>
+            <!--Display Records if matching records are found-->
+            <template if:true={recordFound}>
+                <li class="slds-item" onclick={closeSearchList}><a>
+                        <lightning-icon icon-name="utility:close" size="x-small"></lightning-icon> Close
+                    </a></li>
+                <template for:each={searchList} for:item="record">
+                    <li class="slds-item" key={record.Id} data-value={record.Id} onclick={sendSearchRecords}>
+                        <a>{record.Name}</a></li>
+                </template>
+            </template>
+        </ul>
+    </div>
+</template>

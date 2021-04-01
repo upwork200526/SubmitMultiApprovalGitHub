@@ -1,0 +1,5 @@
+.searchBar{
+    max-height: 100px;
+    cursor: pointer;
+    overflow-y: scroll;
+}
